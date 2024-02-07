@@ -1,0 +1,6 @@
+# Ignore specific file
+example.txt
+scrip-test.js
+
+# Ignore all log files
+*.log
