@@ -4,3 +4,8 @@ script-test.js
 
 # Ignore all log files
 *.log
+
+# Ignore ChatGPT versions
+css/chatgptstyle.css
+chatgptscript.js
+chatgptversion.html
