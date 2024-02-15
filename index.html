@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Run Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+    <img src="img/website-under-construction-page-flat-260nw-684804541.webp" alt="Site under construction" width="300px">
     <h1>Runner's Calculator</h1>
+    <!-- <form> -->
+        <fieldset>
+            <legend>Distance</legend>
+            <input type="number" placeholder="Distance" min="0">
+            <select name="distanceUnit" id="distanceUnit">
+                <option value="Km">Km</option>
+                <option value="Miles">Miles</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Time</legend>
+            <input type="number" placeholder="Hours" min="0">
+            <input type="number" placeholder="Minutes" min="0">
+            <input type="number" placeholder="Seconds" min="0">
+        </fieldset>
+        <!-- <fieldset>
+            <legend>Pace</legend>
+            <input type="number" placeholder="Pace">
+
+        </fieldset> -->
+        
+    <!-- </form> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
