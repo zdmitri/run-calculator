@@ -4,34 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Run Calculator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
+    <script src="script.js"></script>
 </head>
 <body>
     <img src="img/website-under-construction-page-flat-260nw-684804541.webp" alt="Site under construction" width="300px">
     <h1>Runner's Calculator</h1>
-    <!-- <form> -->
+    <form>
         <fieldset>
             <legend>Distance</legend>
-            <input type="number" placeholder="Distance" min="0">
+            <!-- <select name="" id=""></select> -->
+            <input id="inputDistance" list="distance" type="number" placeholder="Distance" min="0">
+            <!-- datalist predefined distance options for input Distance -->
+            <datalist id="distance">
+                <option value="1"></option>
+                <option value="3"></option>
+                <option value="5"></option>
+                <option value="10"></option>
+                <option value="15"></option>
+                <option value="20"></option>
+                <option value="21.1">Half-Marathon</option>
+                <option value="42.2">Marathon</option>
+            </datalist>
+            <!-- selector of yom -->
             <select name="distanceUnit" id="distanceUnit">
-                <option value="Km">Km</option>
-                <option value="Miles">Miles</option>
+                <option value="Km" selected>Km</option>
+                <option value="Miles" disabled>Miles</option>
             </select>
         </fieldset>
         <fieldset>
             <legend>Time</legend>
-            <input type="number" placeholder="Hours" min="0">
-            <input type="number" placeholder="Minutes" min="0">
-            <input type="number" placeholder="Seconds" min="0">
+            <input id="inputHours" type="number" placeholder="Hours" min="0" max="99">
+            <!-- <input type="text" placeholder="Target time in hh:mm:ss" title="Enter time in the format hh:mm:ss" pattern="^[0-9]?[0-9]:[0-5]?[0-9]:[0-5]?[0-9]$"> -->
+            <input id="inputMinutes" type="number" placeholder="Min" min="0" max="59">
+            <input id="inputSeconds" type="number" placeholder="Sec" min="0" max="59">
         </fieldset>
-        <!-- <fieldset>
+        <fieldset>
             <legend>Pace</legend>
-            <input type="number" placeholder="Pace">
+            <input id="inputPace" type="number" placeholder="Target pace">
+        </fieldset>
+        <button type="button">Calculate</button>
+        <button type="reset">Reset</button>
+        <p>Enter at least 2 parameters and press Calculate</p>        
+    </form>
+    <!-- <form action="#" method="post">
+        <label for="timeInput">Enter Time:</label>
+        <input type="text" id="timeInput" name="timeInput" pattern="^[0-9]?[0-9]:[0-5]?[0-9]:[0-5]?[0-9]$" placeholder="hh:mm:ss" required title="Enter time in the format hh:mm:ss">
 
-        </fieldset> -->
-        
-    <!-- </form> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <input type="submit" value="Submit">
+    </form> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
 </body>
 </html>
