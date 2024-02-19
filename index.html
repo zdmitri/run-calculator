@@ -42,6 +42,7 @@
           <option value="Km" selected>Km</option>
           <option value="Miles" disabled>Miles</option>
         </select>
+        <button type="button" onclick="calculateDistance()">Distance</button>
       </fieldset>
       <fieldset>
         <legend>Time</legend>
@@ -64,13 +65,15 @@
           placeholder="Sec"
           min="0"          
         />
+        <button type="button" onclick="">&#x1F552</button>
       </fieldset>
       <fieldset>
         <legend>Pace</legend>
         <input id="inputPaceMinutes" type="number" placeholder="Min" min="0"/>
         <input id="inputPaceSeconds" type="number" placeholder="Sec" min="0"/>
+        <button type="button" onclick="calculatePace()">&#127939</button>
       </fieldset>
-      <button type="button" onclick="clickCalculate()">Calculate</button>
+      
       <button type="reset">Reset</button>
       <p>Enter at least 2 parameters and press Calculate</p>
     </form>

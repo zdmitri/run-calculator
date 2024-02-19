@@ -20,7 +20,7 @@ function getDistance() {
             alert("Please enter a valid distance! Distance can't be negative or zero value!");
             throw new Error("Distance is <= 0");
         };
-        console.log(`Distance is ${Distance} KM`, typeof (Distance));
+        console.log(`Distance is ${Distance} ${document.getElementById('distanceUnit').value}`, typeof (Distance));
     //Result of the function is correct Distance value for further calculations.
 };
 
@@ -71,6 +71,36 @@ function getTime() {
 
 
 
+function getPace () {
+    // Function to get pace from user input fields (in min and sec per km)
+
+    //declare pace componets variables, get data from input fields
+    let inputPaceMinutes = document.getElementById('inputPaceMinutes').value;
+    let inputPaceSeconds = document.getElementById('inputPaceSeconds').value;
+
+    //Check if user made any entry. if NO assign zero value
+    inputPaceMinutes = inputPaceMinutes === '' ? 0 : parseFloat(inputPaceMinutes);
+    inputPaceSeconds = inputPaceSeconds === '' ? 0 : parseFloat(inputPaceSeconds);
+
+    //Check if all inputs were empty/zero. If true throw an exception. Else continue calculation
+    if (inputPaceMinutes == 0 && inputPaceSeconds == 0) {
+        console.log("Pace doesn't have correct value");
+        alert("Please enter a valid pace! Pace can't be zero or negative!");
+        throw new Error("Pace is equal to zero");
+    };
+    if (inputPaceMinutes < 0 || inputPaceSeconds < 0) {
+        console.log("One of the pace components has negative value");
+        alert("Please enter valid pace values! Pace can't be zero or negative!");
+        throw new Error("Pace has negative component");
+    };
+
+    Pace = inputPaceMinutes * 60 + inputPaceSeconds; // seconds per km/mile
+
+    console.log(`Pace in seconds per ${document.getElementById('distanceUnit').value} ${Pace}`, typeof (Pace));
+};
+
+
+
 function calculatePace() {
     
     getDistance();
@@ -93,6 +123,23 @@ function calculatePace() {
 
 
 
-function clickCalculate() {
-    calculatePace();
+function calculateDistance () {
+
+    getTime();
+    getPace();
+
+    // if (document.getElementById('distanceUnit').value === 'Km') {
+    //     Distance = Time / Pace;
+    // };
+    Distance = Time / Pace;
+    console.log(`Distance will be ${Distance.toFixed(3)} ${document.getElementById('distanceUnit').value}`);
+
+    document.getElementById('inputDistance').value = Distance.toFixed(3);
+
 };
+
+
+
+// function clickCalculate() {
+//     calculatePace();
+// };
