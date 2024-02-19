@@ -138,7 +138,19 @@ function calculateDistance () {
 
 };
 
+function calculateTime () {
 
+    getDistance();
+    getPace();
+
+    Time = Distance * Pace;
+    console.log(`Time will be ${Time.toFixed(3)} seconds`);
+
+    document.getElementById('inputHours').value = Math.floor(Time / 3600);
+    document.getElementById('inputMinutes').value = Math.floor((Time % 3600) / 60);
+    document.getElementById('inputSeconds').value = Math.floor((Time % 3600) % 60);
+
+};
 
 // function clickCalculate() {
 //     calculatePace();
