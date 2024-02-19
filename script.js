@@ -24,6 +24,8 @@ function getDistance() {
     //Result of the function is correct Distance value for further calculations.
 };
 
+
+
 function getTime() {
     // Function to calculate total time (in seconds) from the data input by user
 
@@ -33,22 +35,47 @@ function getTime() {
     let Seconds = document.getElementById('inputSeconds').value;
 
     //Check if user made any entry. if NO assign zero value
-    Hours = Hours == '' ? 0 : parseFloat(Hours);
-    Minutes = Minutes == '' ? 0 : parseFloat(Minutes);
-    Seconds = Seconds == '' ? 0 : parseFloat(Seconds);
+    
+    Hours = Hours === '' ? 0 : parseFloat(Hours);
+    Minutes = Minutes === '' ? 0 : parseFloat(Minutes);
+    Seconds = Seconds === '' ? 0 : parseFloat(Seconds);
+
     console.log(Hours, typeof(Hours));
     console.log(Minutes, typeof(Minutes));
     console.log(Seconds, typeof(Seconds));
 
-    // declare Time variable and count it in seconds
-    Time = (Hours * 3600) + (Minutes * 60) + Seconds; 
+    //Check if all inputs were empty/zero. If true throw an exception. Else continue calculation
+    if (Hours == 0 && Minutes == 0 && Seconds == 0) {
+        console.log("Time doesn't have correct value");
+        alert("Please enter a valid time! Time can't be zero or negative!");
+        throw new Error("Time is equal to zero");
+    };
+
+    // declare Time variable and count it in seconds (This will be total time)
+    Time = (Hours * 3600) + (Minutes * 60) + Seconds;
+    
+    // check if Time is equal or less zero. If true throw and exception. Else continue calculation
+    if (Time <= 0) {
+        console.log("Time has negative or zero value");
+        alert("Please enter a valid time! Time can't be zero or negative!");
+        throw new Error("Time is negative or zero");
+    };
+
+    if (Hours < 0 || Minutes < 0 || Seconds < 0) {
+        console.log("One of the time components has negative value");
+        alert(`Be careful with time input. Some time components were negative! However further calculation was possible with assumption that total time is ${Time} seconds`);
+    };
     console.log(`Total time in seconds is: ${Time} ${typeof (Time)}`);
+    //Result of the function is correct Time value for further calculations.
 };
+
+
 
 function calculatePace() {
     
     getDistance();
     getTime();
+
     Pace = (Time / Distance) / 60; // pace in min/km
     paceMinutes = Math.floor(Pace);
     paceSeconds = (Pace - Math.floor(Pace)) * 60;
@@ -58,7 +85,12 @@ function calculatePace() {
     console.log(`Target pace should be ${paceMinutes}:${paceSeconds.toFixed(0)} per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
     
     alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
+
+    document.getElementById('inputPaceMinutes').value = paceMinutes;
+    document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
+
 };
+
 
 
 function clickCalculate() {
