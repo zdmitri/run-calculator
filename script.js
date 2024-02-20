@@ -1,6 +1,8 @@
 let Distance;
 let Time;
 let Pace;
+// let historyResult = []; //declare array where records of calculations will be stored
+let resultParagraph; // Paragraph (ref HTML) to output calculations history
 
 
 
@@ -106,6 +108,7 @@ function getPace () {
 
 function calculatePace() {
     // This function calculates target running Pace based on known inputs Distance and Time. Result will be outputted in respective "Pace" form fields as minutes and seconds
+    console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience
     
     getDistance(); // function collects distance from input field
     getTime(); // function collects time from input field
@@ -117,11 +120,26 @@ function calculatePace() {
     // console.log(`Pace is ${Pace} min/km`);
     // console.log(`Pace is ${paceMinutes}:${paceSeconds} min:sec/km`);
     console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
-    
+
     document.getElementById('inputPaceMinutes').value = paceMinutes;
+    // if (paceSeconds >=0 && paceSeconds <10) {
+    //     document.getElementById('inputPaceSeconds').value = '0' + paceSeconds.toFixed(0);
+    // };
     document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
 
-    alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
+    // alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
+
+    let calculatePaceResult = `To run ${Distance} ${document.getElementById('distanceUnit').value} in ${Time} seconds target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${document.getElementById('distanceUnit').value} (${paceMinutes}:${paceSeconds.toFixed(3)})`;
+
+    resultParagraph = document.createElement('p');
+    resultParagraph.textContent = calculatePaceResult;
+
+    document.getElementById('historyResult').appendChild(resultParagraph);
+    document.getElementById('historyResult').insertBefore(resultParagraph, document.getElementById('historyResult').firstChild);
+    // let resultContainer = document.getElementById('resultContainer');
+    //   resultContainer.insertBefore(newParagraph, resultContainer.firstChild);
+    // historyResult.push(calculatePaceResult);
+    // document.getElementById('historyResult').textContent = '\n' + historyResult.join('\n');
 
 };
 
@@ -129,6 +147,7 @@ function calculatePace() {
 
 function calculateDistance () {
     // This function calculates Distance in selected units of measurement (currently only "KM" supported) based on known inputs Time and Pace. Result will be outputted in the "Distance" form field
+    console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience
 
     getTime(); // function collects time from input field
     getPace(); // function collects pace from input field
@@ -144,7 +163,8 @@ function calculateDistance () {
 };
 
 function calculateTime () {
-    // This function calculates total time in seconds based on known inputs Distance and Pace. The result is converted to hours minutes and seconds and will be outputted in respective "time" form fields 
+    // This function calculates total time in seconds based on known inputs Distance and Pace. The result is converted to hours minutes and seconds and will be outputted in respective "time" form fields
+    console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience 
 
     getDistance(); //function collects distance from input field
     getPace(); //function collects pace from input field
