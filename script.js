@@ -2,6 +2,8 @@ let Distance;
 let Time;
 let Pace;
 
+
+
 function getDistance() {
     //Function to collect and check user distance input
     
@@ -11,7 +13,7 @@ function getDistance() {
     if (Distance === '') {
         console.log("No input in the distance field");
         alert("Please enter a valid distance! Distance can't be negative or zero value!");
-        throw new Error("No input in the distance field");        
+        throw new Error("No input in the distance field");
     };
     //if entry was made, convert to float and check for validity. if value is negative or zero - throw an exception.
     Distance = parseFloat(Distance);
@@ -40,13 +42,13 @@ function getTime() {
     Minutes = Minutes === '' ? 0 : parseFloat(Minutes);
     Seconds = Seconds === '' ? 0 : parseFloat(Seconds);
 
-    console.log(Hours, typeof(Hours));
-    console.log(Minutes, typeof(Minutes));
-    console.log(Seconds, typeof(Seconds));
+    console.log(`Hours ${Hours}`, typeof(Hours));
+    console.log(`Minutes ${Minutes}`, typeof(Minutes));
+    console.log(`Seconds ${Seconds}`, typeof(Seconds));
 
     //Check if all inputs were empty/zero. If true throw an exception. Else continue calculation
     if (Hours == 0 && Minutes == 0 && Seconds == 0) {
-        console.log("Time doesn't have correct value");
+        console.log("Time is equal to zero");
         alert("Please enter a valid time! Time can't be zero or negative!");
         throw new Error("Time is equal to zero");
     };
@@ -54,9 +56,9 @@ function getTime() {
     // declare Time variable and count it in seconds (This will be total time)
     Time = (Hours * 3600) + (Minutes * 60) + Seconds;
     
-    // check if Time is equal or less zero. If true throw and exception. Else continue calculation
+    // check if Time is equal or less zero. If true throw an exception. Else continue calculation
     if (Time <= 0) {
-        console.log("Time has negative or zero value");
+        console.log("Time is negative or zero");
         alert("Please enter a valid time! Time can't be zero or negative!");
         throw new Error("Time is negative or zero");
     };
@@ -84,27 +86,29 @@ function getPace () {
 
     //Check if all inputs were empty/zero. If true throw an exception. Else continue calculation
     if (inputPaceMinutes == 0 && inputPaceSeconds == 0) {
-        console.log("Pace doesn't have correct value");
+        console.log("Pace is equal to zero");
         alert("Please enter a valid pace! Pace can't be zero or negative!");
         throw new Error("Pace is equal to zero");
     };
     if (inputPaceMinutes < 0 || inputPaceSeconds < 0) {
         console.log("One of the pace components has negative value");
         alert("Please enter valid pace values! Pace can't be zero or negative!");
-        throw new Error("Pace has negative component");
+        throw new Error("One of the pace components has negative value");
     };
 
-    Pace = inputPaceMinutes * 60 + inputPaceSeconds; // seconds per km/mile
+    Pace = inputPaceMinutes * 60 + inputPaceSeconds; // seconds per km or mile
 
-    console.log(`Pace in seconds per ${document.getElementById('distanceUnit').value} ${Pace}`, typeof (Pace));
+    console.log(`Pace is ${Pace} seconds per ${document.getElementById('distanceUnit').value} ${Pace}`, typeof (Pace));
+    // Result of the function is correct Pace value is seconds per km (or mile), which can be used in further calculations
 };
 
 
 
 function calculatePace() {
+    // This function calculates target running Pace based on known inputs Distance and Time. Result will be outputted in respective "Pace" form fields as minutes and seconds
     
-    getDistance();
-    getTime();
+    getDistance(); // function collects distance from input field
+    getTime(); // function collects time from input field
 
     Pace = (Time / Distance) / 60; // pace in min/km
     paceMinutes = Math.floor(Pace);
@@ -112,46 +116,44 @@ function calculatePace() {
     
     // console.log(`Pace is ${Pace} min/km`);
     // console.log(`Pace is ${paceMinutes}:${paceSeconds} min:sec/km`);
-    console.log(`Target pace should be ${paceMinutes}:${paceSeconds.toFixed(0)} per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
+    console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
     
-    alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
-
     document.getElementById('inputPaceMinutes').value = paceMinutes;
     document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
+
+    alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
 
 };
 
 
 
 function calculateDistance () {
+    // This function calculates Distance in selected units of measurement (currently only "KM" supported) based on known inputs Time and Pace. Result will be outputted in the "Distance" form field
 
-    getTime();
-    getPace();
+    getTime(); // function collects time from input field
+    getPace(); // function collects pace from input field
 
     // if (document.getElementById('distanceUnit').value === 'Km') {
     //     Distance = Time / Pace;
     // };
     Distance = Time / Pace;
-    console.log(`Distance will be ${Distance.toFixed(3)} ${document.getElementById('distanceUnit').value}`);
+    console.log(`Distance will be ${Distance.toFixed(3)} ${document.getElementById('distanceUnit').value}`, typeof(Distance));
 
     document.getElementById('inputDistance').value = Distance.toFixed(3);
 
 };
 
 function calculateTime () {
+    // This function calculates total time in seconds based on known inputs Distance and Pace. The result is converted to hours minutes and seconds and will be outputted in respective "time" form fields 
 
-    getDistance();
-    getPace();
+    getDistance(); //function collects distance from input field
+    getPace(); //function collects pace from input field
 
     Time = Distance * Pace;
-    console.log(`Time will be ${Time.toFixed(3)} seconds`);
+    console.log(`Time will be ${Time.toFixed(3)} seconds`, typeof(Time));
 
     document.getElementById('inputHours').value = Math.floor(Time / 3600);
     document.getElementById('inputMinutes').value = Math.floor((Time % 3600) / 60);
     document.getElementById('inputSeconds').value = Math.floor((Time % 3600) % 60);
 
 };
-
-// function clickCalculate() {
-//     calculatePace();
-// };
