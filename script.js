@@ -1,8 +1,69 @@
-let Distance;
-let Time;
-let Pace;
-// let historyResult = []; //declare array where records of calculations will be stored
-let resultParagraph; // Paragraph (ref HTML) to output calculations history
+// let Distance;
+// let Time;
+// let Pace;
+
+// let resultString; // String to indicate result of calculations
+// let distanceUnit; // variable to keep selected units of measurement
+
+// let Hours;
+// let Minutes;
+// let Seconds;
+
+
+
+function copyToClipboard() {
+    historyResult = document.getElementById('historyResult')
+    // if (historyResult.textContent == '') {
+    //     console.log('No result to copy');
+    //     alert('No result to copy!');
+    //     throw new Error;
+    // };
+    try {
+        navigator.clipboard.writeText(historyResult.textContent);
+        console.log('Text copied to clipboard');
+        alert('Text copied to clipboard');
+    } catch {
+        console.error('Unable to copy text to clipboard');
+        alert('Unable to copy text to clipboard!');
+    };
+};
+
+
+
+function clearOutputResult() {
+    // Purpose of this function is to clear outputResult "div" block
+
+    // Block where resultString paragraphs are kept
+    historyResult = document.getElementById('historyResult');
+
+    //clear all paragraphs in the block
+    historyResult.innerHTML = '';
+};
+
+
+
+function outputResult() {
+    // Purpose of this function is to take resultString from respective calculation and output it as new line in historyResult "div" block
+
+    // Block where resultString paragraphs will be kept
+    historyResult = document.getElementById('historyResult');
+
+    // Paragraph (ref HTML) to output calculations history
+    resultParagraph = document.createElement('p');
+    resultParagraph.textContent = resultString;
+
+    //add new paragraph with resultString
+    // historyResult.appendChild(resultParagraph);
+    historyResult.insertBefore(resultParagraph, historyResult.firstChild);
+};
+
+
+
+function getDistanceUnit() {
+    //Function to get selected units of measurement from the dropdown list
+
+    distanceUnit = document.getElementById('distanceUnit').value;
+};
 
 
 
@@ -24,7 +85,7 @@ function getDistance() {
             alert("Please enter a valid distance! Distance can't be negative or zero value!");
             throw new Error("Distance is <= 0");
         };
-        console.log(`Distance is ${Distance} ${document.getElementById('distanceUnit').value}`, typeof (Distance));
+        console.log(`Distance is ${Distance} ${distanceUnit}`, typeof (Distance));
     //Result of the function is correct Distance value for further calculations.
 };
 
@@ -34,9 +95,9 @@ function getTime() {
     // Function to calculate total time (in seconds) from the data input by user
 
     //declare time componets variables, get data from input fields
-    let Hours = document.getElementById('inputHours').value;
-    let Minutes = document.getElementById('inputMinutes').value;
-    let Seconds = document.getElementById('inputSeconds').value;
+    Hours = document.getElementById('inputHours').value;
+    Minutes = document.getElementById('inputMinutes').value;
+    Seconds = document.getElementById('inputSeconds').value;
 
     //Check if user made any entry. if NO assign zero value
     
@@ -75,12 +136,12 @@ function getTime() {
 
 
 
-function getPace () {
+function getPace() {
     // Function to get pace from user input fields (in min and sec per km)
 
     //declare pace componets variables, get data from input fields
-    let inputPaceMinutes = document.getElementById('inputPaceMinutes').value;
-    let inputPaceSeconds = document.getElementById('inputPaceSeconds').value;
+    inputPaceMinutes = document.getElementById('inputPaceMinutes').value;
+    inputPaceSeconds = document.getElementById('inputPaceSeconds').value;
 
     //Check if user made any entry. if NO assign zero value
     inputPaceMinutes = inputPaceMinutes === '' ? 0 : parseFloat(inputPaceMinutes);
@@ -100,47 +161,37 @@ function getPace () {
 
     Pace = inputPaceMinutes * 60 + inputPaceSeconds; // seconds per km or mile
 
-    console.log(`Pace is ${Pace} seconds per ${document.getElementById('distanceUnit').value} ${Pace}`, typeof (Pace));
+    console.log(`Pace is ${Pace} seconds per ${distanceUnit}`, typeof (Pace));
     // Result of the function is correct Pace value is seconds per km (or mile), which can be used in further calculations
 };
 
 
 
 function calculatePace() {
-    // This function calculates target running Pace based on known inputs Distance and Time. Result will be outputted in respective "Pace" form fields as minutes and seconds
+    // This function calculates target running Pace based on known inputs Distance and Time. Result will be outputted in respective "Pace" form fields as minutes and seconds. Value will be assigned to the "resultString" variable
+
     console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience
     
+    getDistanceUnit(); // function collects units of measurement from dropdown list
     getDistance(); // function collects distance from input field
     getTime(); // function collects time from input field
-
+    
     Pace = (Time / Distance) / 60; // pace in min/km
     paceMinutes = Math.floor(Pace);
     paceSeconds = (Pace - Math.floor(Pace)) * 60;
     
     // console.log(`Pace is ${Pace} min/km`);
     // console.log(`Pace is ${paceMinutes}:${paceSeconds} min:sec/km`);
-    console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
+    console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`);
 
     document.getElementById('inputPaceMinutes').value = paceMinutes;
-    // if (paceSeconds >=0 && paceSeconds <10) {
-    //     document.getElementById('inputPaceSeconds').value = '0' + paceSeconds.toFixed(0);
-    // };
     document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
 
+    resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
+
+    outputResult();
+
     // alert(`Click! Target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per km (${paceMinutes}:${paceSeconds.toFixed(3)})`);
-
-    let calculatePaceResult = `To run ${Distance} ${document.getElementById('distanceUnit').value} in ${Time} seconds target pace should be ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${document.getElementById('distanceUnit').value} (${paceMinutes}:${paceSeconds.toFixed(3)})`;
-
-    resultParagraph = document.createElement('p');
-    resultParagraph.textContent = calculatePaceResult;
-
-    document.getElementById('historyResult').appendChild(resultParagraph);
-    document.getElementById('historyResult').insertBefore(resultParagraph, document.getElementById('historyResult').firstChild);
-    // let resultContainer = document.getElementById('resultContainer');
-    //   resultContainer.insertBefore(newParagraph, resultContainer.firstChild);
-    // historyResult.push(calculatePaceResult);
-    // document.getElementById('historyResult').textContent = '\n' + historyResult.join('\n');
-
 };
 
 
@@ -149,6 +200,7 @@ function calculateDistance () {
     // This function calculates Distance in selected units of measurement (currently only "KM" supported) based on known inputs Time and Pace. Result will be outputted in the "Distance" form field
     console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience
 
+    getDistanceUnit(); // function collects units of measurement from dropdown list
     getTime(); // function collects time from input field
     getPace(); // function collects pace from input field
 
@@ -160,20 +212,35 @@ function calculateDistance () {
 
     document.getElementById('inputDistance').value = Distance.toFixed(3);
 
+    resultString = `Running for ${Hours} hours ${Minutes} minutes ${Seconds} seconds with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make distance: ${Distance.toFixed(3)} ${distanceUnit}`; // result string to be outputted in historyResult "div" block in outputResult function
+
+    outputResult();
+
 };
+
+
 
 function calculateTime () {
     // This function calculates total time in seconds based on known inputs Distance and Pace. The result is converted to hours minutes and seconds and will be outputted in respective "time" form fields
     console.log("_".repeat(15)); //draw line in the console to separate calculation visually, for convenience 
 
+    getDistanceUnit(); // function collects units of measurement from dropdown list
     getDistance(); //function collects distance from input field
     getPace(); //function collects pace from input field
 
     Time = Distance * Pace;
     console.log(`Time will be ${Time.toFixed(3)} seconds`, typeof(Time));
 
-    document.getElementById('inputHours').value = Math.floor(Time / 3600);
-    document.getElementById('inputMinutes').value = Math.floor((Time % 3600) / 60);
-    document.getElementById('inputSeconds').value = Math.floor((Time % 3600) % 60);
+    Hours = Math.floor(Time / 3600);
+    Minutes = Math.floor((Time % 3600) / 60);
+    Seconds = Math.floor((Time % 3600) % 60);
+
+    document.getElementById('inputHours').value = Hours;
+    document.getElementById('inputMinutes').value = Minutes;
+    document.getElementById('inputSeconds').value = Seconds;
+
+    resultString = `Running ${Distance} ${distanceUnit} with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make time: ${Hours} hours ${Minutes} minutes ${Seconds} seconds`;
+
+    outputResult();
 
 };
