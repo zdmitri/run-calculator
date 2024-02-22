@@ -1,6 +1,7 @@
 # Ignore specific file
 example.txt
 script-test.js
+hello.php
 
 # Ignore all log files
 *.log
@@ -9,3 +10,4 @@ script-test.js
 css/chatgptstyle.css
 chatgptscript.js
 chatgptversion.html
+
