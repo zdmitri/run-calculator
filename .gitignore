@@ -2,6 +2,7 @@
 example.txt
 script-test.js
 hello.php
+bootstrap-basics.html
 
 # Ignore all log files
 *.log
