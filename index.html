@@ -18,9 +18,11 @@
     <h1>Runner's Calculator</h1>
     <p>Enter any 2 known parameters and press respective button against third parameter</p>
     <form>
-      <fieldset>
-        <legend>Distance</legend>
+      <fieldset class="col-8 mx-auto">
+        <legend><button class="btn btn-outline-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button></legend>
+        <!-- <div class="col-11 mx-auto"> -->
         <input
+          class="form-control"
           id="inputDistance"
           list="distance"
           type="number"
@@ -39,15 +41,16 @@
           <!-- <option value="1"></option> -->
         </datalist>
         <!-- selector of yom -->
-        <select id="distanceUnit" name="distanceUnit">
+        <select class="form-select" id="distanceUnit" name="distanceUnit">
           <option value="Km" selected>Km</option>
           <option value="Miles" disabled>Miles</option>
         </select>
-        <button type="button" onclick="calculateDistance()">&#128207</button>
+        <!-- </div> -->
       </fieldset>
-      <fieldset>
-        <legend>Time</legend>
+      <fieldset class="col-8 mx-auto">
+        <legend><button class="btn btn-outline-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button></legend>
         <input
+          class="form-control"
           id="inputHours"
           type="number"
           min="0"
@@ -55,33 +58,33 @@
         />
         <!-- <input type="text" placeholder="Target time in hh:mm:ss" title="Enter time in the format hh:mm:ss" pattern="^[0-9]?[0-9]:[0-5]?[0-9]:[0-5]?[0-9]$"> -->
         <input
+          class="form-control"
           id="inputMinutes"
           type="number"
           placeholder="Minutes"
           min="0"
         />
         <input
+          class="form-control"
           id="inputSeconds"
           type="number"
           placeholder="Seconds"
           min="0"
-        />
-        <button type="button" onclick="calculateTime()">&#x1F552</button>
+        />        
       </fieldset>
-      <fieldset>
-        <legend>Pace</legend>
-        <input id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
-        <input id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
-        <button type="button" onclick="calculatePace()">&#127939</button>
+      <fieldset class="col-8 mx-auto">
+        <legend><button class="btn btn-outline-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button></legend>
+        <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
+        <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>        
       </fieldset>
-
-      <button class="control-buttons" type="reset">Reset Form</button>
-      <button class="control-buttons" onclick="clearOutputResult()">Clear History</button>
-      <button class="control-buttons" onclick="copyToClipboard()">Share Results</button>
-      
+      <div class="col-11 mx-auto" id="formControls">
+        <button class="btn btn-primary control-buttons" type="reset">Reset Form</button>
+        <button class="btn btn-primary control-buttons" onclick="clearOutputResult()">Clear History</button>
+        <button class="btn btn-primary control-buttons" onclick="copyToClipboard()">Share Results</button>
+      </div>
     </form>
 
-    <div id="historyResult">
+    <div class="col-11 mx-auto" id="historyResult">
       <!-- Paragraphs with calculations results will be added here -->
     </div>
 
