@@ -25,8 +25,10 @@
           />
           <!-- datalist predefined distance options for input Distance -->
           <datalist id="distance">
-            <option value="42.2">Marathon</option>
-            <option value="21.1">Half-Marathon</option>
+            <option value="42.2">KM, Marathon</option>
+            <option value="26.2">Miles, Marathon</option>
+            <option value="21.1">KM, Half-Marathon</option>
+            <option value="13.1">Miles, Half-Marathon</option>
             <!-- <option value="20"></option> -->
             <!-- <option value="15"></option> -->
             <option value="10"></option>
@@ -35,9 +37,11 @@
             <!-- <option value="1"></option> -->
           </datalist>
           <!-- selector of yom -->
-          <select class="form-select" id="distanceUnit" name="distanceUnit">
+          <select class="form-select" id="distanceUnit" name="distanceUnit" onchange="updateDistanceList()">
             <option value="Km" selected>Km</option>
-            <option value="Miles" disabled>Miles</option>
+            <option value="Meter" disabled>Meters</option>
+            <option value="Mile">Miles</option>
+            <option value="Feet" disabled>Feet</option>
           </select>
           <button class="btn btn-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
         </fieldset>
@@ -72,6 +76,13 @@
           <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
+
+        <div class="btn-group container w-85" role="group" aria-label="Form controls" id="formControls">
+          <button class="btn btn-warning col-12" id="resetButton" type="reset">Reset Form</button>
+          <button class="btn btn-danger col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
+          <button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
+        </div>
+
       </form>
 
       <!-- <div class="container">
@@ -81,12 +92,6 @@
           <div class="col-4"><button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button></div>
         </div>
       </div> -->
-
-      <div class="btn-group container w-85" role="group" aria-label="Form controls" id="formControls">
-        <button class="btn btn-warning col-12" id="resetButton" type="reset">Reset Form</button>
-        <button class="btn btn-danger col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
-        <button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
-      </div>
 
       <div id="historyResult">
         <!-- Paragraphs with calculations results will be added here -->

@@ -67,6 +67,17 @@ function getDistanceUnit() {
 
 
 
+// function updateDistanceList() {
+//     // Function to update distance list options according to selected units of measurement
+    
+//     getDistanceUnit();
+
+//     if 
+
+// };
+
+
+
 function getDistance() {
     //Function to collect and check user distance input
     
