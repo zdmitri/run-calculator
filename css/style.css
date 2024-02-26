@@ -28,11 +28,15 @@ body    {
     margin-top: 3vh;
 } */
 
-h1, fieldset.col-sm-4, #formControls, #historyResult   {
+h1, fieldset.col-sm-4, #formControls {
     margin-top: 3vh;
 }
 
-p   {
+#formControls   {
+    margin-bottom: 3vh;
+}
+
+h1+p   {
     margin: 0;
 }
 
