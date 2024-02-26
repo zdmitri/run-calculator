@@ -10,78 +10,87 @@
   </head>
   <body>
     <div class="container text-center">
-    <h1>Runner's Calculator</h1>
-    <p>Enter any 2 known parameters and press respective button against third parameter</p>
-    <form class="row">
-      <fieldset class="col-sm-4">
-        <legend>Distance</legend>
-        <input
-          class="form-control"
-          id="inputDistance"
-          list="distance"
-          type="number"
-          placeholder="Distance"
-          min="0"
-        />
-        <!-- datalist predefined distance options for input Distance -->
-        <datalist id="distance">
-          <option value="42.2">Marathon</option>
-          <option value="21.1">Half-Marathon</option>
-          <!-- <option value="20"></option> -->
-          <!-- <option value="15"></option> -->
-          <option value="10"></option>
-          <option value="5"></option>
-          <!-- <option value="3"></option> -->
-          <!-- <option value="1"></option> -->
-        </datalist>
-        <!-- selector of yom -->
-        <select class="form-select" id="distanceUnit" name="distanceUnit">
-          <option value="Km" selected>Km</option>
-          <option value="Miles" disabled>Miles</option>
-        </select>
-        <button class="btn btn-outline-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
-      </fieldset>
-      <fieldset class="col-sm-4">
-        <legend>Time</legend>
-        <input
-          class="form-control"
-          id="inputHours"
-          type="number"
-          min="0"
-          placeholder="Hours"
-        />
-        <input
-          class="form-control"
-          id="inputMinutes"
-          type="number"
-          placeholder="Minutes"
-          min="0"
-        />
-        <input
-          class="form-control"
-          id="inputSeconds"
-          type="number"
-          placeholder="Seconds"
-          min="0"
-        />
-        <button class="btn btn-outline-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
-      </fieldset>
-      <fieldset class="col-sm-4">
-        <legend>Pace</legend>
-        <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
-        <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
-        <button class="btn btn-outline-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
-      </fieldset>
-      <div class="" id="formControls">
-        <button class="btn btn-primary control-buttons col-md-3" type="reset">Reset Form</button>
-        <button class="btn btn-primary control-buttons col-md-3" onclick="clearOutputResult()">Clear History</button>
-        <button class="btn btn-primary control-buttons col-md-3" onclick="copyToClipboard()">Share Results</button>
-      </div>
-    </form>
+      <h1>Runner's Calculator</h1>
+      <p>Enter any 2 known parameters and press respective button against third parameter</p>
+      <form class="row">
+        <fieldset class="col-sm-4">
+          <legend>Distance</legend>
+          <input
+            class="form-control"
+            id="inputDistance"
+            list="distance"
+            type="number"
+            placeholder="Distance"
+            min="0"
+          />
+          <!-- datalist predefined distance options for input Distance -->
+          <datalist id="distance">
+            <option value="42.2">Marathon</option>
+            <option value="21.1">Half-Marathon</option>
+            <!-- <option value="20"></option> -->
+            <!-- <option value="15"></option> -->
+            <option value="10"></option>
+            <option value="5"></option>
+            <!-- <option value="3"></option> -->
+            <!-- <option value="1"></option> -->
+          </datalist>
+          <!-- selector of yom -->
+          <select class="form-select" id="distanceUnit" name="distanceUnit">
+            <option value="Km" selected>Km</option>
+            <option value="Miles" disabled>Miles</option>
+          </select>
+          <button class="btn btn-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
+        </fieldset>
+        <fieldset class="col-sm-4">
+          <legend>Time</legend>
+          <input
+            class="form-control"
+            id="inputHours"
+            type="number"
+            min="0"
+            placeholder="Hours"
+          />
+          <input
+            class="form-control"
+            id="inputMinutes"
+            type="number"
+            placeholder="Minutes"
+            min="0"
+          />
+          <input
+            class="form-control"
+            id="inputSeconds"
+            type="number"
+            placeholder="Seconds"
+            min="0"
+          />
+          <button class="btn btn-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
+        </fieldset>
+        <fieldset class="col-sm-4">
+          <legend>Pace</legend>
+          <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
+          <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
+          <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
+        </fieldset>
+      </form>
 
-    <div class="" id="historyResult">
-      <!-- Paragraphs with calculations results will be added here -->
-    </div>
+      <!-- <div class="container">
+        <div class="row" id="formControls">
+          <div class="col-4"><button class="btn btn-danger col-12" id="resetButton" type="reset">Reset Form</button></div>
+          <div class="col-4"><button class="btn btn-warning col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button></div>
+          <div class="col-4"><button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button></div>
+        </div>
+      </div> -->
+
+      <div class="btn-group container w-75" role="group" aria-label="Form controls" id="formControls">
+        <button class="btn btn-warning col-12" id="resetButton" type="reset">Reset Form</button>
+        <button class="btn btn-danger col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
+        <button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
+      </div>
+
+      <div id="historyResult">
+        <!-- Paragraphs with calculations results will be added here -->
+      </div>
   </div>
 
     <script src="script.js"></script>

@@ -20,8 +20,8 @@ function copyToClipboard() {
     // };
     try {
         navigator.clipboard.writeText(historyResult.textContent);
-        console.log('Text copied to clipboard');
-        alert('Text copied to clipboard');
+        console.log('Results copied to clipboard');
+        alert('Results copied to clipboard');
     } catch {
         console.error('Unable to copy text to clipboard');
         alert('Unable to copy text to clipboard!');
