@@ -15,65 +15,72 @@
       <form class="row">
         <fieldset class="col-sm-4">
           <legend>Distance</legend>
-          <input
-            class="form-control"
-            id="inputDistance"
-            list="distance"
-            type="number"
-            placeholder="Distance"
-            min="0"
-          />
-          <!-- datalist predefined distance options for input Distance -->
-          <datalist id="distance">
-            <option value="42.2">KM, Marathon</option>
-            <option value="26.2">Miles, Marathon</option>
-            <option value="21.1">KM, Half-Marathon</option>
-            <option value="13.1">Miles, Half-Marathon</option>
-            <!-- <option value="20"></option> -->
-            <!-- <option value="15"></option> -->
-            <option value="10"></option>
-            <option value="5"></option>
-            <!-- <option value="3"></option> -->
-            <!-- <option value="1"></option> -->
-          </datalist>
-          <!-- selector of yom -->
-          <select class="form-select" id="distanceUnit" name="distanceUnit" onchange="updateDistanceList()">
-            <option value="Km" selected>Km</option>
-            <option value="Meter" disabled>Meters</option>
-            <option value="Mile">Miles</option>
-            <option value="Feet" disabled>Feet</option>
-          </select>
+          <div class="input-group mb-2">
+            <input
+              class="form-control"
+              style="width:50%;" 
+              id="inputDistance"
+              list="distance"
+              type="number"
+              placeholder="Distance"
+              min="0"
+            />
+            <!-- datalist predefined distance options for input Distance -->
+            <datalist id="distance">
+              <option value="42.2">KM, Marathon</option>
+              <option value="26.2">Miles, Marathon</option>
+              <option value="21.1">KM, Half-Marathon</option>
+              <option value="13.1">Miles, Half-Marathon</option>
+              <!-- <option value="20"></option> -->
+              <!-- <option value="15"></option> -->
+              <option value="10"></option>
+              <option value="5"></option>
+              <!-- <option value="3"></option> -->
+              <!-- <option value="1"></option> -->
+            </datalist>
+            <!-- selector for units of measurement -->
+            <select class="form-select" id="distanceUnit" name="distanceUnit" onchange="updateDistanceList()">
+              <option value="Km" selected>Km</option>
+              <option value="Meter" disabled>Meters</option>
+              <option value="Mile">Miles</option>
+              <option value="Feet" disabled>Feet</option>
+            </select>
+          </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
         </fieldset>
         <fieldset class="col-sm-4">
           <legend>Time</legend>
-          <input
-            class="form-control"
-            id="inputHours"
-            type="number"
-            min="0"
-            placeholder="Hours"
-          />
-          <input
-            class="form-control"
-            id="inputMinutes"
-            type="number"
-            placeholder="Minutes"
-            min="0"
-          />
-          <input
-            class="form-control"
-            id="inputSeconds"
-            type="number"
-            placeholder="Seconds"
-            min="0"
-          />
+          <div class="input-group mb-2">
+            <input
+              class="form-control"
+              id="inputHours"
+              type="number"
+              min="0"
+              placeholder="Hours"
+            />
+            <input
+              class="form-control"
+              id="inputMinutes"
+              type="number"
+              placeholder="Minutes"
+              min="0"
+            />
+            <input
+              class="form-control"
+              id="inputSeconds"
+              type="number"
+              placeholder="Seconds"
+              min="0"
+            />
+          </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
         </fieldset>
         <fieldset class="col-sm-4">
           <legend>Pace</legend>
-          <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
-          <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
+          <div class="input-group mb-2">
+            <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
+            <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
+          </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
 
