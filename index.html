@@ -16,7 +16,7 @@
   <body>
     <div class="container text-center">
       <h1>Runner's Calculator</h1>
-      <p>Enter any 2 known parameters and press respective button against third parameter</p>
+      <p>Enter any two known parameters and press respective button to calculate third parameter</p>
       <form class="row">
         <fieldset class="col-sm-4">
           <legend>Distance</legend>
@@ -90,9 +90,9 @@
         </fieldset>
 
         <div class="btn-group container" role="group" aria-label="Form controls" id="formControls">
-          <button class="btn btn-warning col-12" id="resetButton" type="reset">Reset Form</button>
-          <button class="btn btn-danger col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
-          <button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
+          <button class="btn btn-outline-primary col-12" id="resetButton" type="reset">Reset Form</button>
+          <button class="btn btn-outline-primary col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
+          <button class="btn btn-outline-primary col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
         </div>
 
       </form>
@@ -112,9 +112,15 @@
 
   <!-- Add footer with copyright. Links to the profile and buy me a cofee to be added later -->
   <footer>
-    <div class="container text-center">
+    <div class="text-center">
       <p class="small">&copy; 2024 Dmytro Zadorozhnyi. All rights reserved.</p>
-      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dmytro.zadorozhnyi" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dmytro.zadorozhnyi" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+        </div>
+      </div>
     </div>
   </footer>
 
