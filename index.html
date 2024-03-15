@@ -13,8 +13,8 @@
     <link href="css/style.css" rel="stylesheet" />
     
   </head>
-  <body>
-    <div class="container text-center">
+  <body class="container">
+    <div class="text-center">
       <h1>Runner's Calculator</h1>
       <p>Enter any two known parameters and press respective button to calculate third parameter</p>
       <form class="row">
@@ -89,7 +89,7 @@
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
 
-        <div class="btn-group container" role="group" aria-label="Form controls" id="formControls">
+        <div class="btn-group" role="group" aria-label="Form controls" id="formControls">
           <button class="btn btn-outline-primary col-12" id="resetButton" type="reset">Reset Form</button>
           <button class="btn btn-outline-primary col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
           <button class="btn btn-outline-primary col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
@@ -97,31 +97,23 @@
 
       </form>
 
-      <!-- <div class="container">
-        <div class="row" id="formControls">
-          <div class="col-4"><button class="btn btn-danger col-12" id="resetButton" type="reset">Reset Form</button></div>
-          <div class="col-4"><button class="btn btn-warning col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button></div>
-          <div class="col-4"><button class="btn btn-info col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button></div>
-        </div>
-      </div> -->
-
       <div id="historyResult">
         <!-- Paragraphs with calculations results will be added here -->
       </div>
-  </div>
+    </div>
 
   <!-- Add footer with copyright. Links to the profile and buy me a cofee to be added later -->
   <footer>
     <div class="text-center">
       <p class="small">&copy; 2024 Dmytro Zadorozhnyi. All rights reserved.</p>
     </div>
-    <div class="container">
+    <!-- <div class="container"> -->
       <div class="row justify-content-center">
         <div class="col-auto">
           <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dmytro.zadorozhnyi" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </footer>
 
     <script src="script.js"></script>
