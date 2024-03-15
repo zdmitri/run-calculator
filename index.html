@@ -29,13 +29,17 @@
               type="number"
               placeholder="Distance"
               min="0"
+              max="1000"
+              pattern="[0-9]+"
             />
             <!-- datalist predefined distance options for input Distance -->
             <datalist id="distance">
-              <option value="42.2">KM, Marathon</option>
+              <option value="42.2"></option>
+              <option value="21.1"></option>
+              <!-- <option value="42.2">KM, Marathon</option>
               <option value="26.2">Miles, Marathon</option>
               <option value="21.1">KM, Half-Marathon</option>
-              <option value="13.1">Miles, Half-Marathon</option>
+              <option value="13.1">Miles, Half-Marathon</option> -->
               <!-- <option value="20"></option> -->
               <!-- <option value="15"></option> -->
               <option value="10"></option>
@@ -61,7 +65,9 @@
               id="inputHours"
               type="number"
               min="0"
+              max="999"
               placeholder="Hours"
+              pattern="[0-9]+"
             />
             <input
               class="form-control"
@@ -69,6 +75,8 @@
               type="number"
               placeholder="Minutes"
               min="0"
+              max="59"
+              pattern="[0-9]+"
             />
             <input
               class="form-control"
@@ -76,6 +84,8 @@
               type="number"
               placeholder="Seconds"
               min="0"
+              max="59"
+              pattern="[0-9]+"
             />
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
@@ -83,8 +93,8 @@
         <fieldset class="col-sm-4">
           <legend>Pace</legend>
           <div class="input-group mb-2">
-            <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0"/>
-            <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0"/>
+            <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0" max="59" pattern="[0-9]+"/>
+            <input class="form-control" id="inputPaceSeconds" type="number" placeholder="Seconds" min="0" max="59" pattern="[0-9]+"/>
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
