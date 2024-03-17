@@ -13,3 +13,6 @@ I. You need to calculate your target pace.
 # Support
 Dmytro Zadorozhnyi
 dmitriiz@gmail.com
+
+# Website visitor user counter
+https://www.freevisitorcounters.com/en/home/stats/id/1160695
