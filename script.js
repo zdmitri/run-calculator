@@ -190,15 +190,18 @@ function calculatePace() {
     Pace = (Time / Distance) / 60; // pace in min/km
     paceMinutes = Math.floor(Pace);
     paceSeconds = (Pace - Math.floor(Pace)) * 60;
-    
-    // console.log(`Pace is ${Pace} min/km`);
-    // console.log(`Pace is ${paceMinutes}:${paceSeconds} min:sec/km`);
-    console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`);
 
     document.getElementById('inputPaceMinutes').value = paceMinutes;
-    document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
 
-    resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
+    if (paceSeconds <= 9) {
+        resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes 0${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
+        document.getElementById('inputPaceSeconds').value = '0' + paceSeconds.toFixed(0);
+    } else {
+        resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
+        document.getElementById('inputPaceSeconds').value = paceSeconds.toFixed(0);
+    };
+    
+    console.log(`Target pace will be ${paceMinutes}:${paceSeconds.toFixed(0)} per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`);
 
     outputResult();
 
