@@ -194,7 +194,7 @@ function calculatePace() {
     document.getElementById('inputPaceMinutes').value = paceMinutes;
 
     if (paceSeconds <= 9) {
-        resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes 0${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
+        resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes 0${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:0${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
         document.getElementById('inputPaceSeconds').value = '0' + paceSeconds.toFixed(0);
     } else {
         resultString = `To run ${Distance} ${distanceUnit} in ${Hours} hours ${Minutes} minutes ${Seconds} seconds, target pace has to be: ${paceMinutes} minutes ${paceSeconds.toFixed(0)} seconds per ${distanceUnit} (${paceMinutes}:${paceSeconds.toFixed(3)})`; // result string to be outputted in historyResult "div" block in outputResult funcion
@@ -226,7 +226,11 @@ function calculateDistance () {
 
     document.getElementById('inputDistance').value = Distance.toFixed(3);
 
-    resultString = `Running for ${Hours} hours ${Minutes} minutes ${Seconds} seconds with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make distance: ${Distance.toFixed(3)} ${distanceUnit}`; // result string to be outputted in historyResult "div" block in outputResult function
+    if (inputPaceSeconds <= 9) {
+        resultString = `Running for ${Hours} hours ${Minutes} minutes ${Seconds} seconds with pace ${inputPaceMinutes}:0${inputPaceSeconds} per ${distanceUnit} will make distance: ${Distance.toFixed(3)} ${distanceUnit}`; // result string to be outputted in historyResult "div" block in outputResult function
+    } else {
+        resultString = `Running for ${Hours} hours ${Minutes} minutes ${Seconds} seconds with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make distance: ${Distance.toFixed(3)} ${distanceUnit}`; // result string to be outputted in historyResult "div" block in outputResult function
+    };
 
     outputResult();
 
@@ -253,7 +257,11 @@ function calculateTime () {
     document.getElementById('inputMinutes').value = Minutes;
     document.getElementById('inputSeconds').value = Seconds;
 
-    resultString = `Running ${Distance} ${distanceUnit} with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make time: ${Hours} hours ${Minutes} minutes ${Seconds} seconds`;
+    if (inputPaceSeconds <= 9) {
+        resultString = `Running ${Distance} ${distanceUnit} with pace ${inputPaceMinutes}:0${inputPaceSeconds} per ${distanceUnit} will make time: ${Hours} hours ${Minutes} minutes ${Seconds} seconds`;
+    } else {
+        resultString = `Running ${Distance} ${distanceUnit} with pace ${inputPaceMinutes}:${inputPaceSeconds} per ${distanceUnit} will make time: ${Hours} hours ${Minutes} minutes ${Seconds} seconds`;
+    };
 
     outputResult();
 
