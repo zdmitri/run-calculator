@@ -16,3 +16,6 @@ dmitriiz@gmail.com
 
 # Website visitor counter
 https://www.freevisitorcounters.com/en/home/stats/id/1160695
+
+# Icons
+Icons created with help of Icon.Kitchen
