@@ -1,4 +1,4 @@
-body    {
+.container {
     background: linear-gradient(to right bottom, #2e81d4, #b7d461);
     background-attachment: fixed;
     background-color: #2e81d4;
@@ -7,19 +7,11 @@ body    {
     height: 100vh;
 }
 
-h1, fieldset.col-sm-4, #formControls {
+.top-title, .form-fieldset {
     margin-top: 3vh;
 }
 
-#formControls   {
+.form-control-button-group {
+    margin-top: 3vh;
     margin-bottom: 3vh;
-}
-
-h1+p   {
-    margin: 0;
-}
-
-#resetButton,#clearButton,#shareButton  {
-    padding-left: 5px;
-    padding-right: 5px;
 }

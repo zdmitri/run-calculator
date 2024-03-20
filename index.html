@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Run Calculator</title>
-    <meta name="description" content="Calculate running pace, time, and distance effortlessly with this online running calculator. Enter your desired pace, time, or distance, and get instant results. Perfect for runners, trail runners, joggers, and fitness enthusiasts to make estimations of their marathon or half marathon target time or pace, and for any other distance. It is also possible to select distance units - KM kilometers, miles, metes or feet">
+    <meta name="description" content="Calculate running pace, time, and distance effortlessly with this online running calculator. Enter your desired pace, time, or distance, and get instant results. Perfect for runners, trail runners, joggers, and fitness enthusiasts to make estimations of their marathon or half marathon target time or pace, and for any other distance. It is also possible to select distance units - KM kilometers, miles, meters or feet">
     <meta name="keywords" content="running, calculator, pace, time, distance, fitness, jogging, marathon, half-marathon, marathon time, half marathon time">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -33,10 +33,10 @@
 
   <body class="container">
     <div class="text-center">
-      <h1>Runner's Calculator</h1>
+      <h1 class="top-title">Runner's Calculator</h1>
       <h2 class="fs-6 fw-normal">Enter any two known parameters and press respective button to calculate third parameter (running distance, time or pace)</h2>
       <form class="row">
-        <fieldset class="col-sm-4">
+        <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Distance</h3>
           <div class="input-group mb-2">
             <input
@@ -75,7 +75,7 @@
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
         </fieldset>
-        <fieldset class="col-sm-4">
+        <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Time</h3>
           <div class="input-group mb-2">
             <input
@@ -108,7 +108,7 @@
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
         </fieldset>
-        <fieldset class="col-sm-4">
+        <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Pace</h3>
           <div class="input-group mb-2">
             <input class="form-control" id="inputPaceMinutes" type="number" placeholder="Minutes" min="0" max="59" pattern="[0-9]+"/>
@@ -117,7 +117,7 @@
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
 
-        <div class="btn-group" role="group" aria-label="Form controls" id="formControls">
+        <div class="btn-group form-control-button-group" role="group" aria-label="Form controls" id="formControls">
           <button class="btn btn-outline-primary col-12" id="resetButton" type="reset">Reset Form</button>
           <button class="btn btn-outline-primary col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
           <button class="btn btn-outline-primary col-12" id="shareButton" onclick="copyToClipboard()">Share Results</button>
@@ -132,19 +132,20 @@
 
   <!-- Add footer with copyright. Links to the profile and buy me a cofee to be added later -->
   <footer id="Footer">
+
     <div class="text-center">
       <p class="small">&copy; 2024 <a href="https://www.linkedin.com/in/dmytro-zadorozhnyi/" class="text-decoration-none" target="_blank">Dmytro Zadorozhnyi</a>. All rights reserved.</p>
-    </div>
-    <!-- <div class="container"> -->
+    </div> 
+
+    <!-- Button Say Thank you -->
     <div class="row justify-content-center">
       <div class="col-auto">
         <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dmytro.zadorozhnyi" data-color="#0d6efd" data-emoji=""  data-font="Cookie" data-text='Say "Thank you"' data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
       </div>
     </div>
     
-    <!-- </div> -->
+    <!-- Visitor counter -->
     <div class="text-center">
-      <!-- Below button (visitor counter) added some bug in footer layout. not critical and hardly detected:) -->
       <a href='http://www.freevisitorcounters.com'>freevisitorcounters</a> 
       <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=dee96ae189be629fd0f3014d18760a8afd376d08'></script>
       <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1160695/t/5"></script>
