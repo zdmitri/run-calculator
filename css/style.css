@@ -15,3 +15,8 @@
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
+
+/* this class was added to play with width of distance field, to make it more attractive relatively to the selector of distance unit */
+.distance-field-size {
+    width:50%;
+}

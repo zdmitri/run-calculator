@@ -35,21 +35,14 @@
     <div class="text-center">
       <h1 class="top-title">Runner's Calculator</h1>
       <h2 class="fs-6 fw-normal">Enter any two known parameters and press respective button to calculate third parameter (running distance, time or pace)</h2>
+
       <form class="row">
+
+        <!-- Block with distance field, units of measurement selector and clculate distance field -->
         <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Distance</h3>
           <div class="input-group mb-2">
-            <input
-              class="form-control"
-              style="width:50%;" 
-              id="inputDistance"
-              list="distance"
-              type="number"
-              placeholder="Distance"
-              min="0"
-              max="1000"
-              pattern="[0-9]+"
-            />
+            <input class="form-control distance-field-size" id="inputDistance" list="distance" type="number" placeholder="Distance" min="0" max="1000" pattern="[0-9]+"/>
             <!-- datalist predefined distance options for input Distance -->
             <datalist id="distance">
               <option value="42.2"></option>
@@ -75,39 +68,19 @@
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateDistance()">Distance  &#128207</button>
         </fieldset>
+
+        <!-- Block with time (hous, minutes, seconds) fields and calculate time button -->
         <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Time</h3>
           <div class="input-group mb-2">
-            <input
-              class="form-control"
-              id="inputHours"
-              type="number"
-              min="0"
-              max="999"
-              placeholder="Hours"
-              pattern="[0-9]+"
-            />
-            <input
-              class="form-control"
-              id="inputMinutes"
-              type="number"
-              placeholder="Minutes"
-              min="0"
-              max="59"
-              pattern="[0-9]+"
-            />
-            <input
-              class="form-control"
-              id="inputSeconds"
-              type="number"
-              placeholder="Seconds"
-              min="0"
-              max="59"
-              pattern="[0-9]+"
-            />
+            <input class="form-control" id="inputHours" type="number" min="0" max="999" placeholder="Hours" pattern="[0-9]+"/>
+            <input class="form-control" id="inputMinutes" type="number" placeholder="Minutes" min="0" max="59" pattern="[0-9]+"/>
+            <input class="form-control" id="inputSeconds" type="number" placeholder="Seconds" min="0" max="59" pattern="[0-9]+"/>
           </div>
           <button class="btn btn-primary col-12" type="button" onclick="calculateTime()">Time  &#x1F552</button>
         </fieldset>
+
+        <!-- Block with pace fields and calculate pace button -->
         <fieldset class="col-sm-4 form-fieldset">
           <h3 class="fs-4 fw-normal">Pace</h3>
           <div class="input-group mb-2">
@@ -117,6 +90,7 @@
           <button class="btn btn-primary col-12" type="button" onclick="calculatePace()">Pace  &#127939</button>
         </fieldset>
 
+        <!-- Block with form controls buttons group -->
         <div class="btn-group form-control-button-group" role="group" aria-label="Form controls" id="formControls">
           <button class="btn btn-outline-primary col-12" id="resetButton" type="reset">Reset Form</button>
           <button class="btn btn-outline-primary col-12" id="clearButton" onclick="clearOutputResult()">Clear History</button>
@@ -133,6 +107,7 @@
   <!-- Add footer with copyright. Links to the profile and buy me a cofee to be added later -->
   <footer id="Footer">
 
+    <!-- First line with copyright and link to LinkedIn profile -->
     <div class="text-center">
       <p class="small">&copy; 2024 <a href="https://www.linkedin.com/in/dmytro-zadorozhnyi/" class="text-decoration-none" target="_blank">Dmytro Zadorozhnyi</a>. All rights reserved.</p>
     </div> 
@@ -155,7 +130,10 @@
 
   </footer>
 
+    <!-- main JS code -->
     <script src="script.js"></script>
+
+    <!-- bootstrap JS code -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- Add a service worker for PWA-->
